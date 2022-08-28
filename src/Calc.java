@@ -196,9 +196,12 @@ public class Calc {
     //if possible converts the input into a simple decimal * symbol ex: [1.5pi] [5e]
     public String symbolValue(float input) {
 
+
         float error = 0.00001f;
 
-        for (Map.Entry<String, Double> symbol : symbolData.entrySet()) {
+        if (near(input, error, 0)) return "";
+
+            for (Map.Entry<String, Double> symbol : symbolData.entrySet()) {
             float remainder = (float) (input % symbol.getValue());
 
             for (int i = 0; i < 100; i += 25) {
